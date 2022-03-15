@@ -13,18 +13,21 @@ int main() {
 	cout << "Miles driven this shift: ";
 	cin >>	Miles;
 	cout << "Amount of money received in delivery fees: ";
-	cin	>> FeesReceived;
-	CPM = FeesReceived / Miles;
-	MinOwed = Miles * MILEAGERATE;
-	MinOwed = MinOwed - FeesReceived;
+	cin >> FeesReceived;
+	
+	CPM = FeesReceived / Miles; //calculate cents per mile
+	
+	MinOwed = Miles * MILEAGERATE; //calculate gross dollars owed to driver
+	MinOwed = MinOwed - FeesReceived; //calculate net by subtracting gross from del fees
+	
 	if (CPM >= MILEAGERATE) { //If driver receives more than STD mileage rate
 		cout << "You received $" << setprecision(3) << CPM << "/mi. You do not qualify for reimbursement this shift.";
 	}
-	if (CPM < MILEAGERATE) {
+	if (CPM < MILEAGERATE) { //If driver receives less than STD mileage rate
 		cout << "You received $" << CPM << "/mile today \n";
-		cout << "To reach 0.585¢/mile you are owed $" << setprecision(3) << showpoint << MinOwed;
+		cout << "To reach 0.585Â¢/mile you are owed $" << setprecision(3) << showpoint << MinOwed;
 	}
-	if (Miles == 0) {
+	if (Miles == 0) { //if driver did not leave store
 		cout << "You did not drive today";
 	}
 }
